@@ -15,7 +15,7 @@ tags:
 - Xcode
 ---
 
-https://github.com/kimjj81/SwiftWorkshopAlpha
+<https://github.com/kimjj81/SwiftWorkshopAlpha>
 
 스위프트 4 베타 딱지 붙어있을 때 시작한 번역인데, 약 1달 정도 걸렸습니다. 번역의 어려움을 다시 한번 깨달았고, 그동안 역자들에게 역정냈던 걸 반성도 하게 됩니다. ^^;
 
