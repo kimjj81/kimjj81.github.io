@@ -4,7 +4,6 @@ comments: true
 date: 2010-11-02 08:03:41+00:00
 layout: page
 link: https://kimjj81.github.io/
-slug: about
 title: About
 wordpress_id: 2
 ---
