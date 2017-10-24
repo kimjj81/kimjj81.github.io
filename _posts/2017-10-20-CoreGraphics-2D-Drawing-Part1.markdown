@@ -5,7 +5,7 @@ date: 2017-10-20 10:40:0+0900
 layout: post
 title: "Core Graphics - Quartz 2D 기본편"
 categories: IOS
-tags: Swift Xcode CoreGraphics
+tags: Swift Xcode CoreGraphics Quartz Drawing Affine
 ---
 
 이 문서에서는 Quartz 를 이용하여 출력하는 방법을 소개합니다.  
@@ -132,8 +132,10 @@ CGSizeApplyAffineTransform|사이즈에 대해서 위와 대응되는 함수
 CGRectApplyAffineTransform|사각 영역에 대해 위와 대응되는 함수
 CGAffineTransformMake|변환 행렬을 직접 만들 때 사용하는 함수
 
+----
 
-### 아핀 행렬
+
+### 아핀 행렬의 수학적 기초
 
 아핀 행렬은 3x3 행렬로 구성된다. 가장 오른쪽 열은 0, 0, 1 이 되는데 이것은 concatenation 을 위해 필요한 부분이다. 변환 행렬식은 2 * 3 행렬이면 되지만, 행렬곱은 선행 행렬의 열의 갯수와 후행 행렬의 행의 갯수가 같아야 하기 때문에 변환을 연쇄하기 위해서 3 * 3 행렬로 했다.
 
