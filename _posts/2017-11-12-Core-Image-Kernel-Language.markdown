@@ -14,6 +14,14 @@ Core Image Kernal Language는 사용자 정의 이미지 처리 필터를  위�
 이미지 처리를 위해 OpenGL Shading Language(glslang)도 사용 할 수 있다.  
 다시 말하면 이 문서는 Core Image Kernal 파일을 만들기 위한 언어에 대한 것이다.
 
+## 특징
+
+The kernel language routine for a general-purpose filter kernel has the following characteristics:
+
+    Its return type is vec4 (Core Image Kernel Language) or float4 (Metal Shading Language); that is, it returns a pixel color for the output image.
+
+    It may use zero or more input images. Each input image is represented by a parameter of type sampler.
+    
 ## 함수
 
 ### compare
@@ -160,9 +168,9 @@ The __table flag must precede the sampler type. The flag ensures that Core Image
 
 __table 기호가 envmap 샘플러 값이 변형되지 않도록 방지한다. 만약 음영처리 kernel 이 아핀 변형의 연속상에 있는 경우라도 그러하다. 만약 샘플러에 이런식으로 표시하지 않는다면, 음영 처리 필터가 회전을 위한 아핀 변환을 하고, 회전된 값에서 환경 맵에 있는 lookup table 의 값을 참조하게 된다. 그러면 lookup table 은 단순히 데이터의 집합이기 때문에 틀린 값이 된다.  
 Using the __table flag prevents the envmap sampler values from being transformed, even if the shaded material kernel gets inserted into a filter chain with an affine transform. If you don’t tag the sampler this way and you chain the shaded material filter to an affine transform for rotation, then looking up values in the environment map results in getting rotated values, which is not correct because the lookup table is simply a data collection
-    
+
 ## 예약어(Keywords)
-	
+
 ### kernel
 
 커널 루틴을 명세한다. 커널 루틴은 CIKernel class 에 의해 추출되고 컴파일 된다. 커널은 출력 이미지의 단일 픽셀을 계산하기 위해 필요한 계산식을 캡슐화 한다.  
@@ -188,7 +196,7 @@ OpenGL Shading 언어 소스 코드 전처리기를 지원하지 않는다. 또�
 
 * 내장 함수: ftransform, matrixCompMult, dfdx, dfdy, fwidth, noise1, noise2, noise3, noise4, refract
 
-# 출처 
+# 출처
 
 [Core Image Kernal Language](https://developer.apple.com/library/content/documentation/GraphicsImaging/Reference/CIKernelLangRef/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004397-CH1-SW1)  
 # 참조
