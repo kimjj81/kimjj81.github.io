@@ -321,6 +321,13 @@ decimal.js@^10.4.3:
   resolved "https://registry.npmjs.org/decimal.js/-/decimal.js-10.5.0.tgz"
   integrity sha512-8vDa8Qxvr/+d94hSh5P3IJwI5t8/c0KsMp+g8bNw9cY2icONa5aPfvKeieW1WlG0WQYwwhJ7mjui2xtiePQSXw==
 
+deep-assign@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/deep-assign/-/deep-assign-2.0.0.tgz"
+  integrity sha512-2QhG3Kxulu4XIF3WL5C5x0sc/S17JLgm1SfvDfIRsR/5m7ZGmcejII7fZ2RyWhN0UWIJm0TNM/eKow6LAn3evQ==
+  dependencies:
+    is-obj "^1.0.0"
+
 deepmerge@^4.2.2:
   version "4.3.1"
   resolved "https://registry.npmjs.org/deepmerge/-/deepmerge-4.3.1.tgz"
@@ -616,6 +623,13 @@ hexo-cli@^4.3.2:
     resolve "^1.20.0"
     tildify "^2.0.0"
 
+hexo-filter-mermaid-diagrams@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/hexo-filter-mermaid-diagrams/-/hexo-filter-mermaid-diagrams-1.0.5.tgz"
+  integrity sha512-/IkIMKn4V7PBAzMJGNDPSoBFlv1JGvIELXm5AWkR8N5N44kDTNJLtabb4h095UhZQIXOrF9zA1WYhi6wrWLW5Q==
+  dependencies:
+    deep-assign "^2.0.0"
+
 hexo-front-matter@^4.2.1:
   version "4.2.1"
   resolved "https://registry.npmjs.org/hexo-front-matter/-/hexo-front-matter-4.2.1.tgz"
@@ -871,6 +885,11 @@ is-number@^7.0.0:
   version "7.0.0"
   resolved "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
+
+is-obj@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/is-obj/-/is-obj-1.0.1.tgz"
+  integrity sha512-l4RyHgRqGN4Y3+9JHVrNqO+tN0rV5My76uW5/nuO4K1b6vw5G8d/cmFjP9tRfEsdhZNt0IFdZuK/c2Vr4Nb+Qg==
 
 is-plain-object@^5.0.0:
   version "5.0.0"
