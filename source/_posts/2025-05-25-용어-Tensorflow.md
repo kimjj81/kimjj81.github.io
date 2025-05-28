@@ -6,7 +6,7 @@ tags: Tensorflow
 
 tensorflow 의 tensor 는 무슨 뜻이야? 뭐를 비유하거나 함축하려 한거지?
 
-# 대충 Claude 피셜
+## 대충 Claude 피셜
 
 "Tensor"의 의미와 TensorFlow 이름의 기원
 "TensorFlow"에서 "Tensor"는 수학적 의미를 담고 있으며, 머신러닝 연산의 핵심 개념을 함축합니다.
@@ -32,17 +32,17 @@ Flow: 계산 그래프를 통한 데이터 흐름 - 텐서가 연산 노드들�
 python# TensorFlow에서의 텐서 흐름 예시
 import tensorflow as tf
 
-## 텐서 생성
+### 텐서 생성
 a = tf.constant([1, 2, 3])  # 1차원 텐서(벡터)
 b = tf.constant([[1, 2], [3, 4]])  # 2차원 텐서(행렬)
 
-## 텐서가 연산을 통해 "흐름"
+### 텐서가 연산을 통해 "흐름"
 c = tf.matmul(b, [[10], [20]])  # 행렬 곱셈 연산
 d = tf.add(tf.reshape(a, [3, 1]), c)  # 추가 변환과 덧셈
 이름은 신경망에서 일어나는 핵심 프로세스를 정확히 표현합니다: 다차원 데이터(텐서)가 계산 그래프를 "흐르면서(flow)" 점진적으로 변환되어 최종 결과에 도달하는 과정입니다.
 TensorFlow 창시자들은 물리학과 수학의 개념을 차용하여, 복잡한 딥러닝 연산의 본질을 간결하게 표현하는 이름을 만들었습니다.
 
-# Perplexity 피셜
+## Perplexity 피셜
 
 TensorFlow에서 "tensor(텐서)"는 단순히 하나의 의미만 갖는 것이 아니라, 수학적 개념과 딥러닝 프레임워크의 구조적 특징을 모두 함축하고 있습니다.
 
