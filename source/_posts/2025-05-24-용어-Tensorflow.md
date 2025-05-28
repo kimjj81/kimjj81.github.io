@@ -1,6 +1,6 @@
 ---
 title: 용어 Tensorflow
-date: 2025-05-25 20:30:02
+date: 2025-05-24 20:30:02
 tags: Tensorflow
 ---
 
