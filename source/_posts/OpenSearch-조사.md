@@ -3,6 +3,11 @@ title: OpenSearch 조사
 tags: OpenSearch Analyzer Tokenizer Ranking Index LLM-Driven-Study
 ---
 
+후기 : 다 읽고나니 GPT4.1의 일반 대화로는 질문 외 다른 중요한 사항들에 대해서는 부족한 부분이 많았음.  
+딥리서치를 해서 결과를 비교해야 겠음.
+
+---
+
 OpenSearch 에 대해 공부하기 위해 조사한 사항.  GPT 4.1
 
 
