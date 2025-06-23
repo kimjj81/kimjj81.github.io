@@ -118,3 +118,13 @@ easy_tags_plugin:
   enable: true
   tag_name_case: 1
   sort_ignore_case: true
+
+marked:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: false
+  smartLists: true
+  smartypants: true
+  autolink: true
