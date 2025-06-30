@@ -1,3 +1,6 @@
 [submodule "themes/landscape"]
 	path = themes/landscape
 	url = https://github.com/kimjj81/hexo-theme-landscape
+[submodule "themes/sea"]
+	path = themes/sea
+	url = https://github.com/kimjj81/hexo-theme-sea
