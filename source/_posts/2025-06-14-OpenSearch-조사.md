@@ -1,6 +1,7 @@
 ---
 title: OpenSearch 조사
 tags: OpenSearch Analyzer Tokenizer Ranking Index LLM-Driven-Study
+date: 2025-06-14 11:25:54
 ---
 
 후기 : 다 읽고나니 GPT4.1의 일반 대화로는 질문 외 다른 중요한 사항들에 대해서는 부족한 부분이 많았음.  
