@@ -10,6 +10,21 @@ tags: OpenSearch, Data Prepper, Log Collection
 - https://github.com/opensearch-project/data-prepper/blob/main/docs/getting_started.md
 - https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file
 
+## Prerequisites
+
+OpenSearch 3.10.0 은 java 21로 컴파일된 것으로 보이므로 java 21이 필요하다.
+
+post-installation 에서 /var/log/opensearch/install_demo_security.log 를 살피라고 하지만 아무것도 기록되지 않은 경우 jre 21을 설치해서 해결했다.
+
+```bash
+
+```
+
+```.bashrc
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-arm64
+export OPENSEARCH_JAVA_HOME=$JAVA_HOME
+```
+
 ## 1. Data Prepper 개요
 
 OpenSearch Data Prepper는 서버 사이드 데이터 수집기로, 필터링, 강화, 변환, 정규화, 집계 기능을 제공하여 다운스트림 분석과 시각화를 지원합니다. OpenSearch의 선호되는 데이터 수집 도구입니다.
@@ -487,4 +502,4 @@ services:
 
 ```bash
 docker compose up --build
-```
+``` 
