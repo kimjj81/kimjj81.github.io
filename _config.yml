@@ -128,3 +128,8 @@ marked:
   smartLists: true
   smartypants: true
   autolink: true
+
+sitemap:
+  path: sitemap.xml
+  tag: false
+  category: false
