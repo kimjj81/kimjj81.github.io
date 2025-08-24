@@ -413,7 +413,7 @@ project/
 
 주문(Orders) 도메인이 중심이 되어 다른 도메인의 서비스를 호출하며 비즈니스 로직을 오케스트레이션하는 흐름을 보여줍니다. 중요한 점은 한 도메인의 서비스가 다른 도메인의 모델(DB)에 직접 접근하지 않고, 반드시 해당 도메인의 서비스를 통해서만 통신한다는 것입니다.
 
-```mermaid
+```mermaid.js
 graph TD
     subgraph "Client"
         U[User Request]
