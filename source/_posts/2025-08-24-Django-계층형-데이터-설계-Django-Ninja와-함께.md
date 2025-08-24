@@ -423,7 +423,7 @@ graph TD
         O_API[orders/api.py]
     end
 
-    subgraph "Business Logic Layer (Services)"
+    subgraph "Business Logic Layer \(Services\)"
         O_SVC[orders/services.py]
         P_SVC[products/services.py]
         PAY_SVC[payments/services.py]
@@ -431,7 +431,7 @@ graph TD
         U_SVC[users/services.py]
     end
 
-    subgraph "Data Access Layer (Models)"
+    subgraph "Data Access Layer \(Models\)"
         O_DB[orders/models.py]
         P_DB[products/models.py]
         PAY_DB[payments/models.py]
@@ -541,6 +541,7 @@ class Order(models.Model):
         COMPLETED = 'COMPLETED', 'Completed'
         CANCELED = 'CANCELED', 'Canceled'
 
+    # User 모델에 직접 ForeignKey를 거는 대신, 느슨한 결합을 위해 ID만 저장할 수도 있습니다.
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.CharField(max_length=10, choices=OrderStatus.choices, default=OrderStatus.PENDING)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
