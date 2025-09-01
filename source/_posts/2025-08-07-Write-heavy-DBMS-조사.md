@@ -3,6 +3,7 @@ layout: publish
 title: Write heavy DBMS 조사
 date: 2025-08-07 11:59:03
 tags:
+slug: write-heavy-dbms
 ---
 
 데브시스터즈의 [CockroachDB 아티클](https://tech.devsisters.com/posts/cockroachdb-in-production/)을 읽고 Write 가 정말 중요한 시스템 설계가 궁금해졌다.  

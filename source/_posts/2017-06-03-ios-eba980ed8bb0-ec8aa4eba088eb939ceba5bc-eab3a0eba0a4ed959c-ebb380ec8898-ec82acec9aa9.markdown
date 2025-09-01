@@ -1,12 +1,7 @@
 ---
-author: kimjj81
-comments: true
-date: 2017-06-03 08:19:01+00:00
-layout: post
-link: https://windroamer.wordpress.com/2017/06/03/ios-%eb%a9%80%ed%8b%b0-%ec%8a%a4%eb%a0%88%eb%93%9c%eb%a5%bc-%ea%b3%a0%eb%a0%a4%ed%95%9c-%eb%b3%80%ec%88%98-%ec%82%ac%ec%9a%a9/
-slug: ios-%eb%a9%80%ed%8b%b0-%ec%8a%a4%eb%a0%88%eb%93%9c%eb%a5%bc-%ea%b3%a0%eb%a0%a4%ed%95%9c-%eb%b3%80%ec%88%98-%ec%82%ac%ec%9a%a9
 title: iOS 멀티 스레드를 고려한 변수 사용
-wordpress_id: 10
+date: 2017-06-03 08:19:01+00:00
+slug: ios-multithreading-variable-usage
 categories:
 - IOS
 tags:
@@ -213,15 +208,3 @@ _Explains how to implement concurrent code paths in an application._developer.ap
 
 [**The Swift Programming Language (Swift 3.1): Classes and Structures**
 _The definitive guide to Swift, Apple's new programming language for building iOS, macOS, watchOS, and tvOS apps._developer.apple.com](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-ID82)
-
-
-
-
-
-
-
-
-
-
-
-

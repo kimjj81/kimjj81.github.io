@@ -1,12 +1,7 @@
 ---
-author: kimjj81
-comments: true
-date: 2017-07-16 01:07:34+00:00
-layout: post
-link: https://windroamer.wordpress.com/2017/07/16/%ec%b5%9c%ec%a0%80-%ec%9e%84%ea%b8%89%ea%b3%bc-%ec%9d%b8%ea%b0%84%ec%9d%98-%ea%b0%80%ec%b9%98-%ea%b7%b8%eb%a6%ac%ea%b3%a0-%ec%a7%84%ec%a7%9c-%ec%9a%b0%eb%a6%ac%ea%b0%80-%ec%a7%91%ec%a4%91-%ed%95%b4/
-slug: '%ec%b5%9c%ec%a0%80-%ec%9e%84%ea%b8%89%ea%b3%bc-%ec%9d%b8%ea%b0%84%ec%9d%98-%ea%b0%80%ec%b9%98-%ea%b7%b8%eb%a6%ac%ea%b3%a0-%ec%a7%84%ec%a7%9c-%ec%9a%b0%eb%a6%ac%ea%b0%80-%ec%a7%91%ec%a4%91-%ed%95%b4'
 title: 최저 임금과 인간의 가치 그리고 진짜 우리가 집중 해야 할 것
-wordpress_id: 145
+date: 2017-07-16 01:07:34+00:00
+slug: minimum-wage-human-value-and-what-to-focus-on
 categories:
 - 말
 ---

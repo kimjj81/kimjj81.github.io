@@ -2,6 +2,7 @@
 title: Django 계층형 데이터 설계, Django-Ninja와 함께
 date: 2025-08-24 17:22:05
 tags: python, django-ninja, django, django-rest-framework, DTO, DDD, ORM, Domain
+slug: django-ninja-with-hierarchical-data-design
 ---
 
 Django, DRF 를 이용해서 백엔드 개발을 장기간 했다. 응집성 있게 원칙에 맞춰서 개발을 잘 해왔다고 생각했는데, 부분에서 데이터 구조가 복잡해져 데이터 삭제, 변경이 어려워지고 비즈니스 로직 구현도 어려움을 느끼는 경험을 했다. FastAPI, Spring, DDD 등에 관한 글을 읽으면서 Python으로 개발한 부분은 원칙에 크게 벗어나지 않았지만 데이터가 그물형으로 매우 복잡하게 얽혀있다는 것을 깨닫게 되었다. 

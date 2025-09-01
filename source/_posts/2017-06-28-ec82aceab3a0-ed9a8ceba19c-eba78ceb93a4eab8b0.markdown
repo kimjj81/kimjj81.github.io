@@ -1,12 +1,7 @@
 ---
-author: kimjj81
-comments: true
-date: 2017-06-28 08:10:17+00:00
-layout: post
-link: https://windroamer.wordpress.com/2017/06/28/%ec%82%ac%ea%b3%a0-%ed%9a%8c%eb%a1%9c-%eb%a7%8c%eb%93%a4%ea%b8%b0/
-slug: '%ec%82%ac%ea%b3%a0-%ed%9a%8c%eb%a1%9c-%eb%a7%8c%eb%93%a4%ea%b8%b0'
 title: 사고 회로 만들기
-wordpress_id: 124
+date: 2017-06-28 08:10:17+00:00
+slug: making-thought-circuits
 categories:
 - 말
 ---
@@ -22,5 +17,3 @@ categories:
 그러다보니 세부적인 사항을 기억하는 회로는 발달이 덜 되고, 얼개나 방향을 생각하는 뇌의 회로가 만들어 진 것 같다. 뇌의 회로가 죽을 때 까지 바뀔 수 있다고 하지만 이미 만들어진 것을 바꾸려면, 혹은 새로 만들려면 그때까지 들어간 시간 혹은 그 이상의 노력이 필요하지 않을까 하는 생각이 든다.
 
 이런 자각을 한지 얼마 되지 않는 것 같다. 아직 생명 에너지가 팔팔하다 못해 넘치는 10대, 20대 사람들은 앞으로 내 뇌가 어떤 기능을 가지면 좋을지 생각해보고 그렇게 뇌의 회로를 만들어 나가면 좋겠다.
-
-

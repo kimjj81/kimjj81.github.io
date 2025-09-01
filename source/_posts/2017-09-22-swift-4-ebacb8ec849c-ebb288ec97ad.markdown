@@ -1,12 +1,7 @@
 ---
-author: kimjj81
-comments: true
-date: 2017-09-22 00:14:54+00:00
-layout: post
-link: https://windroamer.wordpress.com/2017/09/22/swift-4-%eb%ac%b8%ec%84%9c-%eb%b2%88%ec%97%ad/
-slug: swift-4-%eb%ac%b8%ec%84%9c-%eb%b2%88%ec%97%ad
 title: Swift 4 문서 번역
-wordpress_id: 1305
+date: 2017-09-22 00:14:54+00:00
+slug: swift-4-document-translation
 categories:
 - IOS
 tags:

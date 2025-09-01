@@ -1,12 +1,7 @@
 ---
-author: kimjj81
-comments: true
-date: 2017-08-21 08:57:30+00:00
-layout: post
-link: https://windroamer.wordpress.com/2017/08/21/%ec%82%ac%ec%9a%a9%ec%9e%90-%ec%8a%a4%ed%86%a0%eb%a6%ac-%ec%9e%91%ec%84%b1/
-slug: '%ec%82%ac%ec%9a%a9%ec%9e%90-%ec%8a%a4%ed%86%a0%eb%a6%ac-%ec%9e%91%ec%84%b1'
 title: 사용자 스토리 작성
-wordpress_id: 964
+date: 2017-08-21 08:57:30+00:00
+slug: writing-user-stories
 categories:
 - Agile
 tags:

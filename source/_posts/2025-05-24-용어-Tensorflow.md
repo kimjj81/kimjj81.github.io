@@ -2,6 +2,7 @@
 title: 용어 Tensorflow
 date: 2025-05-24 20:30:02
 tags: Tensorflow
+slug: tensorflow-terms
 ---
 
 tensorflow 의 tensor 는 무슨 뜻이야? 뭐를 비유하거나 함축하려 한거지?

@@ -2,6 +2,7 @@
 title: '스파게티 코드는 그만: 계층형 데이터 구조와 Aggregator 패턴'
 date: 2025-08-19 12:55:56
 tags: monolith 아키텍처 Django Spring Aggregator ModularMonolith DDD
+slug: hierarchical-data-structure-and-aggregator-pattern
 ---
 
 높은 코드 품질을 위한 기준으로는 재사용성, 유지보수성, 확장성 등이 있다.  

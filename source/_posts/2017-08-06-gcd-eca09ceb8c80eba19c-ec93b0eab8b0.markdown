@@ -1,12 +1,7 @@
 ---
-author: kimjj81
-comments: true
-date: 2017-08-06 08:33:10+00:00
-layout: post
-link: https://windroamer.wordpress.com/2017/08/06/gcd-%ec%a0%9c%eb%8c%80%eb%a1%9c-%ec%93%b0%ea%b8%b0/
-slug: gcd-%ec%a0%9c%eb%8c%80%eb%a1%9c-%ec%93%b0%ea%b8%b0
 title: GCD 제대로 쓰기
-wordpress_id: 643
+date: 2017-08-06 08:33:10+00:00
+slug: using-gcd-properly
 categories:
 - IOS
 tags:
@@ -686,5 +681,3 @@ Q1 = dispatch_queue_create_with_target("Q1", DISPATCH_QUEUE_SERIAL, EQ)</blockqu
 
 	
   * 문제를 해결하기 위한 툴을 사용하자
-
-

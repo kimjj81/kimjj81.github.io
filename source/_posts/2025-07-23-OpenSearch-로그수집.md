@@ -3,6 +3,7 @@ layout: publish
 title: OpenSearch 로그수집
 date: 2025-07-23 10:16:03
 tags: OpenSearch, Data Prepper, Log Collection
+slug: opensearch-log-collection
 ---
 
 ## 참고자료 
