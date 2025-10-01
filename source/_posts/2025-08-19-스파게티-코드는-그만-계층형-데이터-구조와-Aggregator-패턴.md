@@ -159,8 +159,8 @@ public void on(ProductUpdated e) {
 
 9.1 도메인 의존성 DAG
 
-```mermaid.js
-graph LR
+```mermaid
+graph
   P[Products] --> O[Orders]
   P --> I[Inventory]
   O --> Pay[Payments]
@@ -179,13 +179,14 @@ Orders --> Shipping --> Notifications
 9.2 안티패턴: 그물형(순환)
 
 ```mermaid
-graph LR
+graph
   A[Products] <--> B[Orders]
   B <--> C[Payments]
   C <--> D[Shipping]
   D <--> A
   A <--> C
   B <--> D
+
 ```
 
 ASCII
