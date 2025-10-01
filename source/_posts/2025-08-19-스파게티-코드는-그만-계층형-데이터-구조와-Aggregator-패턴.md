@@ -56,6 +56,7 @@ DB 레벨 결합 최소화: 타 모듈 테이블에 대한 FK/조인 지양, 필
 
 5.1 퍼사드(Service)로 노출
 
+```python
 # products/services.py
 from .models import Product
 
@@ -72,9 +73,11 @@ def create_order(user_id: int, product_id: int, qty: int):
     # Order.objects.create(user_id=user_id, product_id=prod["id"],
     #                      product_name=prod["name"], unit_price=prod["price"], qty=qty)
     ...
+```
 
 5.2 이벤트로 읽기 모델 갱신(예시 아이디어)
 
+```python
 # products/signals.py
 from django.dispatch import Signal
 product_updated = Signal()  # args: id, name, price
@@ -90,11 +93,12 @@ def on_product_updated(sender, **kwargs):
     # Orders 읽기 테이블(프로젝션)에 상품 요약 업서트
     # OrderItemSummary.upsert(product_id=kwargs['id'], name=kwargs['name'], price=kwargs['price'])
     ...
+```
 
 6) Spring 예시
 
 6.1 서비스 인터페이스(퍼사드)
-
+```java
 // product/application/ProductService.java
 public interface ProductService {
     ProductDto getProductInfo(Long id);
@@ -111,9 +115,11 @@ public class OrderService {
         // 스냅샷 저장 후 주문 생성
     }
 }
+```
 
 6.2 이벤트 기반 프로젝션
 
+```java
 // product/domain/event/ProductUpdated.java
 public record ProductUpdated(Long id, String name, BigDecimal price) {}
 
@@ -125,6 +131,7 @@ publisher.publishEvent(new ProductUpdated(p.getId(), p.getName(), p.getPrice()))
 public void on(ProductUpdated e) {
     // 읽기 모델(프로젝션) 업서트
 }
+```
 
 7) 팀/조직 관점: 코드 소유권과 리뷰
 
@@ -152,6 +159,7 @@ public void on(ProductUpdated e) {
 
 9.1 도메인 의존성 DAG
 
+```mermaid.js
 graph LR
   P[Products] --> O[Orders]
   P --> I[Inventory]
@@ -159,6 +167,7 @@ graph LR
   O --> S[Shipping]
   Pay --> N[Notifications]
   S --> N
+```
 
 ASCII
 
@@ -169,6 +178,7 @@ Orders --> Shipping --> Notifications
 
 9.2 안티패턴: 그물형(순환)
 
+```mermaid
 graph LR
   A[Products] <--> B[Orders]
   B <--> C[Payments]
@@ -176,6 +186,7 @@ graph LR
   D <--> A
   A <--> C
   B <--> D
+```
 
 ASCII
 
@@ -186,6 +197,7 @@ Products <--> Orders <--> Payments <--> Shipping
 
 9.3 Aggregator(BFF) 동기 컴포지션(시퀀스)
 
+```mermaid
 sequenceDiagram
   participant Client
   participant Agg as Aggregator(BFF)
@@ -198,6 +210,7 @@ sequenceDiagram
   Agg->>Prod: loadProducts(order.items[].productId)
   Prod-->>Agg: ProductDTO[]
   Agg-->>Client: ComposedView(OrderDTO + ProductDTO[])
+```
 
 ASCII
 
@@ -208,6 +221,7 @@ Aggregator -> Client : composed view (Order + Product)
 
 9.4 이벤트 기반 읽기 모델(프로젝션)
 
+```mermaid
 sequenceDiagram
   participant Prod as Products (Owner)
   participant Bus as EventBus
@@ -216,6 +230,7 @@ sequenceDiagram
   Prod->>Bus: ProductUpdated(id, name, price)
   Bus->>Read: ProductUpdated(...)
   Read->>Read: Upsert product summary (for fast reads)
+```
 
 ASCII
 
@@ -224,6 +239,7 @@ Orders Read Model : Product 요약/가격 등 프로젝션 갱신
 
 9.5 모듈러 모놀리스: 경계 + 퍼사드
 
+```meraid
 graph TB
   subgraph Monolith Process
     subgraph Products Module
@@ -241,6 +257,7 @@ graph TB
     OSvc --> PSvc
     PSvc --> PRepo
   end
+```
 
 ASCII
 
