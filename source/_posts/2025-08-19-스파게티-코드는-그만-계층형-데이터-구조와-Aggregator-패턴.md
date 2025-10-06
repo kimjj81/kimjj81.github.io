@@ -160,7 +160,7 @@ public void on(ProductUpdated e) {
 9.1 도메인 의존성 DAG
 
 ```mermaid
-graph
+flowchart TD
   P[Products] --> O[Orders]
   P --> I[Inventory]
   O --> Pay[Payments]
@@ -179,7 +179,7 @@ Orders --> Shipping --> Notifications
 9.2 안티패턴: 그물형(순환)
 
 ```mermaid
-graph
+flowchart TD
   A[Products] <--> B[Orders]
   B <--> C[Payments]
   C <--> D[Shipping]
@@ -241,7 +241,7 @@ Orders Read Model : Product 요약/가격 등 프로젝션 갱신
 9.5 모듈러 모놀리스: 경계 + 퍼사드
 
 ```meraid
-graph TB
+flowchart TD
   subgraph Monolith Process
     subgraph Products Module
       PSvc[ProductService (Public API)]
