@@ -10,7 +10,7 @@ slug: hierarchical-data-structure-and-aggregator-pattern
 로직에서만 발생하는 문제가 아니라 데이터 구조도 복잡한 그물망 형태가 되지 않도록 해야하는데 소흘해지기 쉽기 때문이다.  
 일반적으로 사용하는 RDBMS 에서는 데이터간 관계를 맺는게 나쁜 일이 아니기 때문이다.  
 
-1) 모놀리식 스파게티의 문제
+## 1) 모놀리식 스파게티의 문제
 
 높은 결합도: 하나의 변경이 연쇄적으로 다른 부분에 영향.
 
@@ -20,7 +20,7 @@ slug: hierarchical-data-structure-and-aggregator-pattern
 
 핵심 원인: 모듈/도메인 경계 부재 + 양방향/순환 의존 + DB 레벨 직접 결합.
 
-2) 해결 방향: 계층형 데이터 구조와 비순환 의존
+## 2) 해결 방향: 계층형 데이터 구조와 비순환 의존
 
 DAG(Directed Acyclic Graph) 원칙: 의존성이 한 방향으로만 흐르도록 설계 (사이클 금지).
 
@@ -30,7 +30,7 @@ DB 레벨 결합 최소화: 타 모듈 테이블에 대한 FK/조인 지양, 필
 
 ✔️ 도메인 A는 도메인 B를 직접 모델/조인하지 않는다. 필요 데이터는 Aggregator 또는 퍼사드(Service API) 를 통해 획득.
 
-3) Aggregator 패턴 (조합 서비스)
+## 3) Aggregator 패턴 (조합 서비스)
 
 서로 다른 도메인의 데이터를 조합해야 할 때, 중립적인 Aggregator가 데이터를 모아 응답/뷰를 생성한다.
 
@@ -42,7 +42,7 @@ DB 레벨 결합 최소화: 타 모듈 테이블에 대한 FK/조인 지양, 필
 
 운영 트랜잭션 DB는 경계 내에서 단순화, 통합 조회/리포팅은 별도 읽기 모델/리포팅 DB로 분리 가능.
 
-4) 모노레포에서 경계 유지하기
+## 4) 모노레포에서 경계 유지하기
 
 모노레포는 쉽게 경계를 무시하기 좋은 환경. 따라서 팀 규칙/도구로 강제한다.
 
@@ -52,7 +52,7 @@ DB 레벨 결합 최소화: 타 모듈 테이블에 대한 FK/조인 지양, 필
 
 ⛔ 내부 REST 호출 지양: 같은 프로세스에서 자기 REST를 호출하면 지연/오류/복잡도만 늘어난다 → 내부는 메서드 호출로 캡슐화.
 
-5) Django 예시
+## 5) Django 예시
 
 5.1 퍼사드(Service)로 노출
 
@@ -75,7 +75,7 @@ def create_order(user_id: int, product_id: int, qty: int):
     ...
 ```
 
-5.2 이벤트로 읽기 모델 갱신(예시 아이디어)
+### 5.2 이벤트로 읽기 모델 갱신(예시 아이디어)
 
 ```python
 # products/signals.py
@@ -95,9 +95,9 @@ def on_product_updated(sender, **kwargs):
     ...
 ```
 
-6) Spring 예시
+## 6) Spring 예시
 
-6.1 서비스 인터페이스(퍼사드)
+### 6.1 서비스 인터페이스(퍼사드)
 ```java
 // product/application/ProductService.java
 public interface ProductService {
@@ -117,7 +117,7 @@ public class OrderService {
 }
 ```
 
-6.2 이벤트 기반 프로젝션
+### 6.2 이벤트 기반 프로젝션
 
 ```java
 // product/domain/event/ProductUpdated.java
@@ -133,7 +133,7 @@ public void on(ProductUpdated e) {
 }
 ```
 
-7) 팀/조직 관점: 코드 소유권과 리뷰
+## 7) 팀/조직 관점: 코드 소유권과 리뷰
 
 모듈 단위 소유권: 모듈은 이상적으로 단일 팀이 책임.
 
@@ -141,7 +141,7 @@ public void on(ProductUpdated e) {
 
 의존성 스캔/테스트: 순환 의존 탐지, 금지 import 룰, 아키텍처 테스트(ArchUnit 등) 활용.
 
-8) 실천 체크리스트
+## 8) 실천 체크리스트
 
 의존성은 단방향(DAG) 으로 유지 (사이클 금지).
 
@@ -155,9 +155,9 @@ public void on(ProductUpdated e) {
 
 아키텍처 룰을 CI·리뷰·테스트로 강제.
 
-9) 다이어그램 (Mermaid + ASCII 대체)
+## 9) 다이어그램 (Mermaid + ASCII 대체)
 
-9.1 도메인 의존성 DAG
+### 9.1 도메인 의존성 DAG
 
 ```mermaid
 flowchart TD
@@ -176,7 +176,7 @@ Products --> Orders --> Payments --> Notifications
 Orders --> Shipping --> Notifications
 (역방향 화살표/사이클 없음: DAG)
 
-9.2 안티패턴: 그물형(순환)
+### 9.2 안티패턴: 그물형(순환)
 
 ```mermaid
 flowchart TD
@@ -186,7 +186,6 @@ flowchart TD
   D <--> A
   A <--> C
   B <--> D
-
 ```
 
 ASCII
@@ -196,7 +195,7 @@ Products <--> Orders <--> Payments <--> Shipping
     +-----------------------------------+
 (사이클 존재: 결합도↑, 변경 영향도↑)
 
-9.3 Aggregator(BFF) 동기 컴포지션(시퀀스)
+### 9.3 Aggregator(BFF) 동기 컴포지션(시퀀스)
 
 ```mermaid
 sequenceDiagram
@@ -213,14 +212,12 @@ sequenceDiagram
   Agg-->>Client: ComposedView(OrderDTO + ProductDTO[])
 ```
 
-ASCII
-
 Client -> Aggregator(BFF)
 Aggregator -> OrdersService : loadOrder(id)
 Aggregator -> ProductsService: loadProducts(productIds)
 Aggregator -> Client : composed view (Order + Product)
 
-9.4 이벤트 기반 읽기 모델(프로젝션)
+### 9.4 이벤트 기반 읽기 모델(프로젝션)
 
 ```mermaid
 sequenceDiagram
@@ -233,14 +230,13 @@ sequenceDiagram
   Read->>Read: Upsert product summary (for fast reads)
 ```
 
-ASCII
 
 Products --(ProductUpdated)--> EventBus --> Orders Read Model
 Orders Read Model : Product 요약/가격 등 프로젝션 갱신
 
-9.5 모듈러 모놀리스: 경계 + 퍼사드
+### 9.5 모듈러 모놀리스: 경계 + 퍼사드
 
-```meraid
+```mermaid
 flowchart TD
   subgraph Monolith Process
     subgraph Products Module
@@ -268,11 +264,11 @@ ASCII
                  ProductService(API) -> ProductRepository
 (다른 모듈 Repo/엔티티 직접 접근 금지, Public API만 사용)
 
-10) 태그/키워드
+## 10) 태그/키워드
 
 #모놀리식 #아키텍처 #Django #Spring #Aggregator #ModularMonolith #DDD #DAG #BoundedContext #Projection #BFF
 
-11) 참고 자료(레퍼런스)
+## 11) 참고 자료(레퍼런스)
 
 - Robert C. Martin, Acyclic Dependencies Principle
 - Domain-Driven Design, Bounded Context / Aggregate / Context Mapping
