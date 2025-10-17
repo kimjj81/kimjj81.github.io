@@ -171,11 +171,6 @@ flowchart TD
   end
 ```
 
-```mermaid
-graph LR
-  a-->b
-```
-
 ASCII
 
 Products --> Orders --> Payments --> Notifications
