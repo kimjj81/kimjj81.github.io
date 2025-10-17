@@ -361,14 +361,7 @@ layout: true
             font-size: 96px;
         }
 
-        /* Font families */
-        .font-myeongjo {
-            font-family: 'Nanum Myeongjo', serif;
-        }
-
-        .font-system {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
+        /* Custom font family will be applied via inline style */
 
         /* Device notice */
         .device-notice {
@@ -403,16 +396,36 @@ layout: true
 
                 <div class="setting-group">
                     <label class="setting-label">폰트 선택</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="font-myeongjo" name="font" value="myeongjo" checked>
-                            <label for="font-myeongjo">명조체</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="font-system" name="font" value="system">
-                            <label for="font-system">시스템 폰트</label>
-                        </div>
-                    </div>
+                    <select class="text-input" id="fontSelect">
+                        <optgroup label="한글 폰트">
+                            <option value="'Nanum Myeongjo', serif" selected>나눔명조</option>
+                            <option value="'Nanum Gothic', sans-serif">나눔고딕</option>
+                            <option value="'Malgun Gothic', sans-serif">맑은 고딕</option>
+                            <option value="'Batang', serif">바탕</option>
+                            <option value="'Gulim', sans-serif">굴림</option>
+                            <option value="'Dotum', sans-serif">돋움</option>
+                        </optgroup>
+                        <optgroup label="영어 폰트">
+                            <option value="'Times New Roman', serif">Times New Roman</option>
+                            <option value="'Georgia', serif">Georgia</option>
+                            <option value="'Arial', sans-serif">Arial</option>
+                            <option value="'Helvetica', sans-serif">Helvetica</option>
+                            <option value="'Verdana', sans-serif">Verdana</option>
+                        </optgroup>
+                        <optgroup label="영어 필기체">
+                            <option value="'Brush Script MT', cursive">Brush Script MT</option>
+                            <option value="'Lucida Handwriting', cursive">Lucida Handwriting</option>
+                            <option value="'Lucida Calligraphy', cursive">Lucida Calligraphy</option>
+                            <option value="'Bradley Hand', cursive">Bradley Hand</option>
+                            <option value="'Snell Roundhand', cursive">Snell Roundhand</option>
+                            <option value="'Apple Chancery', cursive">Apple Chancery</option>
+                            <option value="'Zapfino', cursive">Zapfino</option>
+                        </optgroup>
+                        <optgroup label="기타">
+                            <option value="'Courier New', monospace">Courier New (고정폭)</option>
+                            <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+                        </optgroup>
+                    </select>
                 </div>
 
                 <div class="setting-group">
@@ -459,7 +472,7 @@ layout: true
     <script>
         // Settings management
         const settings = {
-            font: 'myeongjo',
+            font: "'Nanum Myeongjo', serif",
             sentence: '가나다라마바사아자차카타파하',
             size: 'medium',
             repetitions: 10
@@ -479,7 +492,7 @@ layout: true
         // Generate practice sheet
         document.getElementById('generateBtn').addEventListener('click', () => {
             // Get settings
-            settings.font = document.querySelector('input[name="font"]:checked').value;
+            settings.font = document.getElementById('fontSelect').value;
             settings.sentence = document.getElementById('sentenceInput').value.trim();
             settings.size = 'medium'; // Default to medium
             settings.repetitions = parseInt(repetitionSlider.value);
@@ -525,7 +538,8 @@ layout: true
         function generatePracticeArea() {
             const practiceArea = document.getElementById('practiceArea');
             practiceArea.innerHTML = '';
-            practiceArea.className = `practice-area size-${settings.size} font-${settings.font}`;
+            practiceArea.className = `practice-area size-${settings.size}`;
+            practiceArea.style.fontFamily = settings.font;
 
             const characters = Array.from(settings.sentence);
 
@@ -659,7 +673,8 @@ layout: true
             const newSize = getSizeValue(settings.size);
 
             // Update class for CSS-based sizing
-            practiceArea.className = `practice-area size-${settings.size} font-${settings.font}`;
+            practiceArea.className = `practice-area size-${settings.size}`;
+            practiceArea.style.fontFamily = settings.font;
 
             // Update all canvas sizes
             const canvases = practiceArea.querySelectorAll('canvas');
