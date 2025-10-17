@@ -108,7 +108,7 @@ deploy:
 # mermaid chart
 mermaid: ## mermaid url https://github.com/knsv/mermaid
   enable: true  # default true
-  version: "7.1.2" # default v7.1.2
+  version: "11.12.0" # default v7.1.2
   options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
     #startOnload: true  // default true
 
@@ -130,6 +130,16 @@ marked:
   smartLists: true
   smartypants: true
   autolink: true
+  disableNunjucks: true
+
+kramed:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: true
+  smartLists: true
+  smartypants: true
 
 sitemap:
   path: 

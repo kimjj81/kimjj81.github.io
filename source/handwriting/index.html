@@ -1,0 +1,664 @@
+---
+title: 손글씨 연습
+auto_menu: true
+menu_title: 손글씨 연습
+menu_icon: iconfont icon-edit
+menu_order: 100
+menu_parent: pages
+layout: false
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>손글씨 연습</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            touch-action: none;
+            overscroll-behavior: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Settings Page */
+        #settingsPage {
+            display: block;
+        }
+
+        #settingsPage.hidden {
+            display: none;
+        }
+
+        .settings-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 32px;
+            color: #333;
+            text-align: center;
+        }
+
+        .setting-group {
+            margin-bottom: 28px;
+        }
+
+        .setting-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-option label {
+            display: block;
+            padding: 14px 20px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            border-color: #007AFF;
+            background: #007AFF;
+            color: white;
+            font-weight: 600;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 18px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: #007AFF;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: #ddd;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #007AFF;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #007AFF;
+            cursor: pointer;
+            border: none;
+        }
+
+        .slider-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #007AFF;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 18px;
+            background: #007AFF;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 12px;
+        }
+
+        .btn-primary:active {
+            background: #0051D5;
+        }
+
+        /* Practice Page */
+        #practicePage {
+            display: none;
+        }
+
+        #practicePage.active {
+            display: block;
+        }
+
+        .practice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .size-selector {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .size-selector .radio-option {
+            flex: initial;
+            min-width: auto;
+        }
+
+        .size-selector .radio-option label {
+            padding: 10px 16px;
+            font-size: 14px;
+        }
+
+        .btn-secondary {
+            padding: 12px 24px;
+            background: white;
+            color: #007AFF;
+            border: 2px solid #007AFF;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:active {
+            background: #f0f0f0;
+        }
+
+        .btn-reset {
+            padding: 12px 24px;
+            background: #FF3B30;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-reset:active {
+            background: #D70015;
+        }
+
+        .practice-area {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .character-row {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .character-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .char-line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .char-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .reference-box {
+            position: relative;
+            flex-shrink: 0;
+            border: 3px solid #333;
+            border-radius: 8px;
+            background: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .practice-box {
+            position: relative;
+            flex-shrink: 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .practice-box canvas {
+            display: block;
+            touch-action: none;
+        }
+
+        .guide-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ccc;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .reference-text {
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* Size variations */
+        .size-small .reference-box,
+        .size-small .practice-box {
+            width: 80px;
+            height: 80px;
+        }
+
+        .size-small .guide-text,
+        .size-small .reference-text {
+            font-size: 48px;
+        }
+
+        .size-medium .reference-box,
+        .size-medium .practice-box {
+            width: 120px;
+            height: 120px;
+        }
+
+        .size-medium .guide-text,
+        .size-medium .reference-text {
+            font-size: 72px;
+        }
+
+        .size-large .reference-box,
+        .size-large .practice-box {
+            width: 160px;
+            height: 160px;
+        }
+
+        .size-large .guide-text,
+        .size-large .reference-text {
+            font-size: 96px;
+        }
+
+        /* Font families */
+        .font-myeongjo {
+            font-family: 'Nanum Myeongjo', serif;
+        }
+
+        .font-system {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Settings Page -->
+        <div id="settingsPage">
+            <div class="settings-card">
+                <h1>손글씨 연습 설정</h1>
+
+                <div class="setting-group">
+                    <label class="setting-label">폰트 선택</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="font-myeongjo" name="font" value="myeongjo" checked>
+                            <label for="font-myeongjo">명조체</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="font-system" name="font" value="system">
+                            <label for="font-system">시스템 폰트</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">연습할 문장</label>
+                    <input type="text" class="text-input" id="sentenceInput" value="가나다라마바사아자차카타파하" placeholder="연습할 글자를 입력하세요">
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">글자당 연습 횟수</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="repetitionSlider" min="1" max="20" value="10">
+                        <span class="slider-value" id="repetitionValue">10</span>
+                    </div>
+                </div>
+
+                <button class="btn-primary" id="generateBtn">연습지 생성</button>
+            </div>
+        </div>
+
+        <!-- Practice Page -->
+        <div id="practicePage">
+            <div class="practice-header">
+                <button class="btn-secondary" id="backBtn">← 설정으로</button>
+                <div class="size-selector">
+                    <div class="radio-option">
+                        <input type="radio" id="practice-size-small" name="practice-size" value="small">
+                        <label for="practice-size-small">작게</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="practice-size-medium" name="practice-size" value="medium" checked>
+                        <label for="practice-size-medium">보통</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="practice-size-large" name="practice-size" value="large">
+                        <label for="practice-size-large">크게</label>
+                    </div>
+                </div>
+                <button class="btn-reset" id="resetAllBtn">전체 초기화</button>
+            </div>
+            <div class="practice-area" id="practiceArea"></div>
+        </div>
+    </div>
+
+    <script>
+        // Settings management
+        const settings = {
+            font: 'myeongjo',
+            sentence: '가나다라마바사아자차카타파하',
+            size: 'medium',
+            repetitions: 10
+        };
+
+        // Canvas drawing state
+        let isDrawing = false;
+        let currentCanvas = null;
+
+        // Update repetition value display
+        const repetitionSlider = document.getElementById('repetitionSlider');
+        const repetitionValue = document.getElementById('repetitionValue');
+        repetitionSlider.addEventListener('input', (e) => {
+            repetitionValue.textContent = e.target.value;
+        });
+
+        // Generate practice sheet
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            // Get settings
+            settings.font = document.querySelector('input[name="font"]:checked').value;
+            settings.sentence = document.getElementById('sentenceInput').value.trim();
+            settings.size = 'medium'; // Default to medium
+            settings.repetitions = parseInt(repetitionSlider.value);
+
+            if (!settings.sentence) {
+                alert('연습할 문장을 입력해주세요.');
+                return;
+            }
+
+            // Generate practice area
+            generatePracticeArea();
+
+            // Set the practice page size selector to match
+            document.getElementById('practice-size-medium').checked = true;
+
+            // Switch pages
+            document.getElementById('settingsPage').classList.add('hidden');
+            document.getElementById('practicePage').classList.add('active');
+        });
+
+        // Back to settings
+        document.getElementById('backBtn').addEventListener('click', () => {
+            document.getElementById('practicePage').classList.remove('active');
+            document.getElementById('settingsPage').classList.remove('hidden');
+        });
+
+        // Reset all
+        document.getElementById('resetAllBtn').addEventListener('click', () => {
+            if (confirm('모든 연습 내용을 초기화하시겠습니까?')) {
+                generatePracticeArea();
+            }
+        });
+
+        // Dynamic size change in practice page
+        document.querySelectorAll('input[name="practice-size"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                settings.size = e.target.value;
+                updatePracticeAreaSize();
+            });
+        });
+
+        // Generate practice area
+        function generatePracticeArea() {
+            const practiceArea = document.getElementById('practiceArea');
+            practiceArea.innerHTML = '';
+            practiceArea.className = `practice-area size-${settings.size} font-${settings.font}`;
+
+            const characters = Array.from(settings.sentence);
+
+            characters.forEach(char => {
+                if (char.trim() === '') return;
+
+                const row = document.createElement('div');
+                row.className = 'character-row';
+
+                // Create lines for this character
+                const boxes = [];
+
+                // Reference box
+                const refBox = document.createElement('div');
+                refBox.className = 'reference-box';
+                const refText = document.createElement('div');
+                refText.className = 'guide-text reference-text';
+                refText.textContent = char;
+                refBox.appendChild(refText);
+                boxes.push(refBox);
+
+                // Practice boxes
+                for (let i = 0; i < settings.repetitions; i++) {
+                    const practiceBox = createPracticeBox(char);
+                    boxes.push(practiceBox);
+                }
+
+                // Create a single line with reference + all practice boxes
+                const line = document.createElement('div');
+                line.className = 'char-line';
+                boxes.forEach(box => line.appendChild(box));
+                row.appendChild(line);
+
+                practiceArea.appendChild(row);
+            });
+        }
+
+        // Create practice box with canvas
+        function createPracticeBox(char) {
+            const box = document.createElement('div');
+            box.className = 'practice-box';
+
+            const guideText = document.createElement('div');
+            guideText.className = 'guide-text';
+            guideText.textContent = char;
+            box.appendChild(guideText);
+
+            const canvas = document.createElement('canvas');
+            const size = getSizeValue(settings.size);
+            canvas.width = size;
+            canvas.height = size;
+            box.appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#000';
+
+            // Drawing events
+            let drawing = false;
+            let lastX = 0;
+            let lastY = 0;
+
+            function getPosition(e) {
+                const rect = canvas.getBoundingClientRect();
+                const touch = e.touches ? e.touches[0] : e;
+                return {
+                    x: touch.clientX - rect.left,
+                    y: touch.clientY - rect.top
+                };
+            }
+
+            function startDrawing(e) {
+                e.preventDefault();
+                drawing = true;
+                const pos = getPosition(e);
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function draw(e) {
+                if (!drawing) return;
+                e.preventDefault();
+
+                const pos = getPosition(e);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function stopDrawing(e) {
+                if (drawing) {
+                    e.preventDefault();
+                }
+                drawing = false;
+            }
+
+            // Mouse events
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            // Touch events
+            canvas.addEventListener('touchstart', startDrawing, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
+            canvas.addEventListener('touchend', stopDrawing, { passive: false });
+            canvas.addEventListener('touchcancel', stopDrawing, { passive: false });
+
+            return box;
+        }
+
+        // Get size value in pixels
+        function getSizeValue(size) {
+            switch(size) {
+                case 'small': return 80;
+                case 'medium': return 120;
+                case 'large': return 160;
+                default: return 120;
+            }
+        }
+
+        // Update practice area size dynamically
+        function updatePracticeAreaSize() {
+            const practiceArea = document.getElementById('practiceArea');
+            const newSize = getSizeValue(settings.size);
+
+            // Update class for CSS-based sizing
+            practiceArea.className = `practice-area size-${settings.size} font-${settings.font}`;
+
+            // Update all canvas sizes
+            const canvases = practiceArea.querySelectorAll('canvas');
+            canvases.forEach(canvas => {
+                // Save current drawing
+                const imageData = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+                const oldWidth = canvas.width;
+                const oldHeight = canvas.height;
+
+                // Resize canvas
+                canvas.width = newSize;
+                canvas.height = newSize;
+
+                // Restore context settings
+                const ctx = canvas.getContext('2d');
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = '#000';
+
+                // Scale and restore drawing
+                if (oldWidth > 0 && oldHeight > 0) {
+                    const scale = newSize / oldWidth;
+                    ctx.scale(scale, scale);
+                    ctx.putImageData(imageData, 0, 0);
+                    ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+                }
+            });
+        }
+    </script>
+</body>
+</html>
