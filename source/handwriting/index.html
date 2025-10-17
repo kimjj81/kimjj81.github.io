@@ -5,14 +5,21 @@ menu_title: 손글씨 연습
 menu_icon: iconfont icon-edit
 menu_order: 100
 menu_parent: pages
-layout: false
+layout: true
 ---
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>손글씨 연습</title>
+    <title>온라인 손글씨 연습 - 무료 한글 쓰기 연습장</title>
+    <meta name="description" content="무료 온라인 한글 손글씨 연습 도구입니다. 태블릿이나 터치 기반 기기에서 한글 쓰기를 연습하세요. 명조체, 시스템 폰트 지원, 반복 횟수 조절 가능.">
+    <meta name="keywords" content="손글씨 연습, 한글 쓰기, 온라인 연습장, 태블릿 글씨 연습, 한글 필사, 캘리그라피 연습">
+    <meta name="author" content="kimjj81">
+    <meta property="og:title" content="온라인 손글씨 연습 - 무료 한글 쓰기 연습장">
+    <meta property="og:description" content="태블릿이나 터치 기반 기기에서 한글 손글씨를 연습할 수 있는 무료 온라인 도구">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
@@ -363,12 +370,34 @@ layout: false
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
+        /* Device notice */
+        .device-notice {
+            background: #E3F2FD;
+            border-left: 4px solid #2196F3;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #1565C0;
+            line-height: 1.6;
+        }
+
+        .device-notice strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Settings Page -->
         <div id="settingsPage">
+            <div class="device-notice">
+                <strong>📱 터치 기반 기기 권장</strong>
+                이 도구는 태블릿, 아이패드, 터치스크린 노트북 등 터치 입력이 가능한 기기에 최적화되어 있습니다. 마우스로도 사용 가능하지만, 터치펜이나 손가락으로 사용하시면 더 좋은 연습 경험을 제공합니다.
+            </div>
             <div class="settings-card">
                 <h1>손글씨 연습 설정</h1>
 
