@@ -161,12 +161,19 @@ public void on(ProductUpdated e) {
 
 ```mermaid
 flowchart TD
-  P[Products] --> O[Orders]
-  P --> I[Inventory]
-  O --> Pay[Payments]
-  O --> S[Shipping]
-  Pay --> N[Notifications]
-  S --> N
+  subgraph diagram
+    P["Products"]-->O["Orders"]
+    P-->I["Inventory"]
+    O-->Pay["Payments"]
+    O-->S["Shipping"]
+    Pay-->N["Notifications"]
+    S-->N
+  end
+```
+
+```mermaid
+graph LR
+  a-->b
 ```
 
 ASCII
@@ -180,12 +187,14 @@ Orders --> Shipping --> Notifications
 
 ```mermaid
 flowchart TD
-  A[Products] <--> B[Orders]
-  B <--> C[Payments]
-  C <--> D[Shipping]
-  D <--> A
-  A <--> C
-  B <--> D
+  subgraph diagram
+    A[Products] <--> B[Orders]
+    B <--> C[Payments]
+    C <--> D[Shipping]
+    D <--> A
+    A <--> C
+    B <--> D
+  end
 ```
 
 ASCII
