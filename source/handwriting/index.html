@@ -381,6 +381,164 @@ layout: true
             font-size: 15px;
         }
 
+        /* Sentence mode styles */
+        .sentence-line {
+            margin-bottom: 32px;
+            padding: 24px;
+            background: #f9f9f9;
+            border-radius: 12px;
+        }
+
+        .sentence-reference {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: white;
+            border-radius: 8px;
+            border: 3px solid #333;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        .sentence-practice-box {
+            position: relative;
+            width: 100%;
+            min-height: 100px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            margin-bottom: 16px;
+            padding: 8px;
+        }
+
+        .sentence-practice-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .sentence-practice-box canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        .sentence-guide-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #e0e0e0;
+            font-size: 20px;
+            pointer-events: none;
+            user-select: none;
+            text-align: center;
+            width: 90%;
+            word-wrap: break-word;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .modal-close {
+            font-size: 32px;
+            color: #999;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .sentence-list {
+            list-style: none;
+        }
+
+        .sentence-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .sentence-text {
+            flex: 1;
+            font-size: 16px;
+            color: #333;
+            word-break: break-word;
+        }
+
+        .btn-delete {
+            padding: 8px 16px;
+            background: #FF3B30;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+
+        .btn-delete:active {
+            background: #D70015;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 16px;
+        }
+
     </style>
 </head>
 <body>
@@ -429,8 +587,56 @@ layout: true
                 </div>
 
                 <div class="setting-group">
+                    <label class="setting-label">연습 모드</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="mode-char" name="practice-mode" value="char" checked>
+                            <label for="mode-char">글자별 연습</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="mode-sentence" name="practice-mode" value="sentence">
+                            <label for="mode-sentence">문장 반복 연습</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setting-group">
                     <label class="setting-label">연습할 문장</label>
+                    <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                        <select class="text-input" id="sentencePreset" style="flex: 1;">
+                            <option value="">예시 문장 선택...</option>
+                            <optgroup label="한글">
+                                <option value="가나다라마바사아자차카타파하">한글 자음 순서</option>
+                                <option value="빠른 갈색 여우가 게으른 개를 뛰어넘습니다">빠른 여우 (한글 팡그램)</option>
+                                <option value="키스의 고유 조건은 입술끼리 만나야 하고">키스의 고유 조건</option>
+                                <option value="다람쥐 헌 쳇바퀴에 타고파">다람쥐 헌 쳇바퀴</option>
+                                <option value="세상에서 가장 아름다운 것은 꿈을 꾸는 용기다">아름다운 꿈</option>
+                            </optgroup>
+                            <optgroup label="영어">
+                                <option value="The quick brown fox jumps over the lazy dog">The quick brown fox (Pangram)</option>
+                                <option value="Pack my box with five dozen liquor jugs">Pack my box (Pangram)</option>
+                                <option value="How vexingly quick daft zebras jump">Vexing zebras (Pangram)</option>
+                                <option value="Sphinx of black quartz, judge my vow">Sphinx quartz (Pangram)</option>
+                                <option value="The five boxing wizards jump quickly">Boxing wizards (Pangram)</option>
+                                <option value="ABCDEFGHIJKLMNOPQRSTUVWXYZ">Uppercase Alphabet</option>
+                                <option value="abcdefghijklmnopqrstuvwxyz">Lowercase Alphabet</option>
+                            </optgroup>
+                            <optgroup label="영어 필기체 연습">
+                                <option value="Love conquers all things">Love conquers all</option>
+                                <option value="Practice makes perfect every day">Practice makes perfect</option>
+                                <option value="Beautiful handwriting takes patience">Beautiful handwriting</option>
+                                <option value="The art of beautiful writing">Art of writing</option>
+                                <option value="Graceful letters flow smoothly">Graceful letters</option>
+                            </optgroup>
+                            <optgroup label="내가 추가한 문장">
+                            </optgroup>
+                        </select>
+                    </div>
                     <input type="text" class="text-input" id="sentenceInput" value="가나다라마바사아자차카타파하" placeholder="연습할 글자를 입력하세요">
+                    <div style="display: flex; gap: 8px; margin-top: 8px;">
+                        <button class="btn-secondary" id="saveSentenceBtn" style="flex: 1;">현재 문장 저장</button>
+                        <button class="btn-secondary" id="manageSentencesBtn" style="flex: 1;">저장된 문장 관리</button>
+                    </div>
                 </div>
 
                 <div class="setting-group">
@@ -467,6 +673,17 @@ layout: true
             </div>
             <div class="practice-area" id="practiceArea"></div>
         </div>
+
+        <!-- Sentence Management Modal -->
+        <div class="modal" id="sentenceModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">저장된 문장 관리</h2>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+                <ul class="sentence-list" id="sentenceList"></ul>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -475,12 +692,139 @@ layout: true
             font: "'Nanum Myeongjo', serif",
             sentence: '가나다라마바사아자차카타파하',
             size: 'medium',
-            repetitions: 10
+            repetitions: 10,
+            mode: 'char' // 'char' or 'sentence'
         };
+
+        // Local storage for custom sentences
+        const STORAGE_KEY = 'handwriting_custom_sentences';
+
+        function getCustomSentences() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        function saveCustomSentences(sentences) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(sentences));
+            updateCustomSentencesDropdown();
+        }
+
+        function addCustomSentence(sentence) {
+            const sentences = getCustomSentences();
+            if (!sentences.includes(sentence) && sentence.trim()) {
+                sentences.push(sentence);
+                saveCustomSentences(sentences);
+                return true;
+            }
+            return false;
+        }
+
+        function deleteCustomSentence(sentence) {
+            const sentences = getCustomSentences();
+            const filtered = sentences.filter(s => s !== sentence);
+            saveCustomSentences(filtered);
+        }
+
+        function updateCustomSentencesDropdown() {
+            const select = document.getElementById('sentencePreset');
+            const customGroup = select.querySelector('optgroup[label="내가 추가한 문장"]');
+
+            // Clear existing custom options
+            customGroup.innerHTML = '';
+
+            // Add custom sentences
+            const customSentences = getCustomSentences();
+            customSentences.forEach(sentence => {
+                const option = document.createElement('option');
+                option.value = sentence;
+                option.textContent = sentence;
+                customGroup.appendChild(option);
+            });
+        }
 
         // Canvas drawing state
         let isDrawing = false;
         let currentCanvas = null;
+
+        // Initialize custom sentences dropdown on load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCustomSentencesDropdown();
+        });
+
+        // Preset sentence selection
+        document.getElementById('sentencePreset').addEventListener('change', (e) => {
+            if (e.target.value) {
+                document.getElementById('sentenceInput').value = e.target.value;
+            }
+        });
+
+        // Save current sentence
+        document.getElementById('saveSentenceBtn').addEventListener('click', () => {
+            const sentence = document.getElementById('sentenceInput').value.trim();
+            if (!sentence) {
+                alert('저장할 문장을 입력해주세요.');
+                return;
+            }
+            if (addCustomSentence(sentence)) {
+                alert('문장이 저장되었습니다!');
+            } else {
+                alert('이미 저장된 문장이거나 올바르지 않습니다.');
+            }
+        });
+
+        // Manage sentences modal
+        const modal = document.getElementById('sentenceModal');
+        const manageSentencesBtn = document.getElementById('manageSentencesBtn');
+        const closeModal = document.getElementById('closeModal');
+
+        manageSentencesBtn.addEventListener('click', () => {
+            showSentenceModal();
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        function showSentenceModal() {
+            const sentences = getCustomSentences();
+            const list = document.getElementById('sentenceList');
+            list.innerHTML = '';
+
+            if (sentences.length === 0) {
+                list.innerHTML = '<div class="empty-message">저장된 문장이 없습니다.</div>';
+            } else {
+                sentences.forEach(sentence => {
+                    const li = document.createElement('li');
+                    li.className = 'sentence-item';
+
+                    const text = document.createElement('span');
+                    text.className = 'sentence-text';
+                    text.textContent = sentence;
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-delete';
+                    deleteBtn.textContent = '삭제';
+                    deleteBtn.addEventListener('click', () => {
+                        if (confirm(`"${sentence}"를 삭제하시겠습니까?`)) {
+                            deleteCustomSentence(sentence);
+                            showSentenceModal(); // Refresh the list
+                        }
+                    });
+
+                    li.appendChild(text);
+                    li.appendChild(deleteBtn);
+                    list.appendChild(li);
+                });
+            }
+
+            modal.classList.add('active');
+        }
 
         // Update repetition value display
         const repetitionSlider = document.getElementById('repetitionSlider');
@@ -496,6 +840,7 @@ layout: true
             settings.sentence = document.getElementById('sentenceInput').value.trim();
             settings.size = 'medium'; // Default to medium
             settings.repetitions = parseInt(repetitionSlider.value);
+            settings.mode = document.querySelector('input[name="practice-mode"]:checked').value;
 
             if (!settings.sentence) {
                 alert('연습할 문장을 입력해주세요.');
@@ -541,6 +886,16 @@ layout: true
             practiceArea.className = `practice-area size-${settings.size}`;
             practiceArea.style.fontFamily = settings.font;
 
+            if (settings.mode === 'sentence') {
+                generateSentenceMode();
+            } else {
+                generateCharMode();
+            }
+        }
+
+        // Character by character mode
+        function generateCharMode() {
+            const practiceArea = document.getElementById('practiceArea');
             const characters = Array.from(settings.sentence);
 
             characters.forEach(char => {
@@ -575,6 +930,124 @@ layout: true
 
                 practiceArea.appendChild(row);
             });
+        }
+
+        // Sentence repetition mode
+        function generateSentenceMode() {
+            const practiceArea = document.getElementById('practiceArea');
+
+            // Create container for sentence practice
+            const sentenceLine = document.createElement('div');
+            sentenceLine.className = 'sentence-line';
+
+            // Reference sentence
+            const refBox = document.createElement('div');
+            refBox.className = 'sentence-reference';
+            refBox.textContent = settings.sentence;
+            refBox.style.fontFamily = settings.font;
+            sentenceLine.appendChild(refBox);
+
+            // Practice boxes for repeating the sentence
+            for (let i = 0; i < settings.repetitions; i++) {
+                const practiceBox = createSentencePracticeBox(settings.sentence);
+                sentenceLine.appendChild(practiceBox);
+            }
+
+            practiceArea.appendChild(sentenceLine);
+        }
+
+        // Create sentence practice box
+        function createSentencePracticeBox(sentence) {
+            const box = document.createElement('div');
+            box.className = 'sentence-practice-box';
+
+            const guideText = document.createElement('div');
+            guideText.className = 'sentence-guide-text';
+            guideText.textContent = sentence;
+            guideText.style.fontFamily = settings.font;
+            box.appendChild(guideText);
+
+            const canvas = document.createElement('canvas');
+            box.appendChild(canvas);
+
+            // Set canvas size after it's appended to DOM
+            setTimeout(() => {
+                const boxWidth = box.offsetWidth || 800;
+                canvas.width = boxWidth - 16; // Account for padding
+                canvas.height = 100;
+
+                // Reinitialize context after resize
+                const ctx = canvas.getContext('2d');
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = '#000';
+            }, 0);
+
+            const ctx = canvas.getContext('2d');
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#000';
+
+            // Drawing events
+            let drawing = false;
+            let lastX = 0;
+            let lastY = 0;
+
+            function getPosition(e) {
+                const rect = canvas.getBoundingClientRect();
+                const touch = e.touches ? e.touches[0] : e;
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                return {
+                    x: (touch.clientX - rect.left) * scaleX,
+                    y: (touch.clientY - rect.top) * scaleY
+                };
+            }
+
+            function startDrawing(e) {
+                e.preventDefault();
+                drawing = true;
+                const pos = getPosition(e);
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function draw(e) {
+                if (!drawing) return;
+                e.preventDefault();
+
+                const pos = getPosition(e);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function stopDrawing(e) {
+                if (drawing) {
+                    e.preventDefault();
+                }
+                drawing = false;
+            }
+
+            // Mouse events
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            // Touch events
+            canvas.addEventListener('touchstart', startDrawing, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
+            canvas.addEventListener('touchend', stopDrawing, { passive: false });
+            canvas.addEventListener('touchcancel', stopDrawing, { passive: false });
+
+            return box;
         }
 
         // Create practice box with canvas
