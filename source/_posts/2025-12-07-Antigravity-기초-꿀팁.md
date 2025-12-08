@@ -84,9 +84,6 @@ Ensure every function has at least one positive test case and one edge case.
 
 ### Workflow 수정
 
-그런데, Anvigravity Version 1.11.14 에서 Workflows 목록이 다 나오지 않는다.
-그래서 그런지 등록한 workflow를 사용 할 수 없다.  
-개인설정 문제인지, 버그인지는 추후 업데이트 하겠습니다.  
 
 ![Workflow 수정](image-10.png)
 
@@ -95,3 +92,14 @@ Ensure every function has at least one positive test case and one edge case.
 Workspace 한정 Workflow는 다음처럼 파일 탐색기에서 볼 수 있다.
 
 ![Workspace Workflow](image-9.png)
+
+
+### Workflow 오류 수정
+
+그런데, Anvigravity Version 1.11.14 에서 Workflows 목록이 다 나오지 않는다.
+그래서 그런지 등록한 workflow를 사용 할 수 었다.  
+
+"description 항목에 콜론(:)이 포함되어 있는데, 따옴표로 감싸지지 않아 YAML 파싱 에러가 발생" 했습니다.
+그래서 description 항목을 따옴표로 감쌌습니다.  
+antigravity 에서는 해당 md 파일을 자신만의 편집기로 열고, md 형식이기 때문에 쉽게 드러나지 않는 문제였습니다.  
+그럼에도 불구하고 antigravity 에 물어보니 해결해주기도 합니다. 😂
