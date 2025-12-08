@@ -103,3 +103,7 @@ Workspace 한정 Workflow는 다음처럼 파일 탐색기에서 볼 수 있다.
 그래서 description 항목을 따옴표로 감쌌습니다.  
 antigravity 에서는 해당 md 파일을 자신만의 편집기로 열고, md 형식이기 때문에 쉽게 드러나지 않는 문제였습니다.  
 그럼에도 불구하고 antigravity 에 물어보니 해결해주기도 합니다. 😂
+
+### 참고
+
+Antigravity 설명서 : https://codelabs.developers.google.com/getting-started-google-antigravity?hl=ko
