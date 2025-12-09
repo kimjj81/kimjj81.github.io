@@ -142,9 +142,7 @@ kramed:
   smartypants: true
 
 sitemap:
-  path:
-    - sitemap.xml
-    - sitemap.txt
+  path: sitemap.xml
   # template: ./sitemap_template.xml
   # template_txt: ./sitemap_template.txt
   rel: false
