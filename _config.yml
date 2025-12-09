@@ -4,12 +4,12 @@
 
 # Site
 title: 김정진 블로그
-subtitle: ''
-description: '지금은 Python, ML.'
-keywords: ['Python', 'ML', 'Programming', 'Agile']
+subtitle: ""
+description: "지금은 Python, ML."
+keywords: ["Python", "ML", "Programming", "Agile"]
 author: 김 정진
 language: en
-timezone: 'Asia/Seoul'
+timezone: "Asia/Seoul"
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -20,7 +20,6 @@ permalink_defaults:
 pretty_urls:
   trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: false # Set to false to remove trailing '.html' from permalinks
-  
 
 # Directory
 source_dir: source
@@ -39,30 +38,30 @@ titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
   field: site # Apply to the whole site
-  exclude: ''
+  exclude: ""
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
 highlight:
   line_number: true
   auto_detect: false
-  tab_replace: ''
+  tab_replace: ""
   wrap: true
   hljs: false
 prismjs:
   preprocess: true
   line_number: true
-  tab_replace: ''
+  tab_replace: ""
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
 
@@ -82,7 +81,7 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+updated_option: "mtime"
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -104,13 +103,13 @@ theme: fluid
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: ""
 
 # mermaid chart
 mermaid: ## mermaid url https://github.com/knsv/mermaid
-  enable: true  # default true
+  enable: true # default true
   version: "11.12.0" # default v7.1.2
-  options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
+  options: # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
     #startOnload: true  // default true
 
 # Disqus
@@ -143,7 +142,7 @@ kramed:
   smartypants: true
 
 sitemap:
-  path: 
+  path:
     - sitemap.xml
     - sitemap.txt
   # template: ./sitemap_template.xml
